@@ -1,13 +1,13 @@
-const { verifyTransaction } = require('./utils');
-const { transactions, balances } = require('./database');
+import { verifyTransaction } from './utils';
+import { transactions, balances } from './database';
 
 // Initialize Blockchain
-const init = async (_balances, _transactions, _blockSize) => {
+export const init = async (bal: any, tx: any, size: any) => {
   try {
 		// TODO: initialize blockchain with parameters
-    // const _balances = JSON.parse(bal);
-    // const _transactions = JSON.parse(tx);
-    // const _blockSize = Number(size);
+    const _balances = JSON.parse(bal);
+    const _transactions = JSON.parse(tx);
+    const _blockSize = Number(size);
     if (!_balances || !_transactions || !_blockSize) 
       return console.info('Initialization failed!');
 
@@ -33,14 +33,16 @@ const init = async (_balances, _transactions, _blockSize) => {
 }
 
 // Get Account Balance
-const getAccountBalance = async (index) => {
+export const getAccountBalance = async (idx: any) => {
 	try {
+    // console.info(items);
+    console.info((await transactions));
 		// Todo: get account balance for a given index
-    console.info(typeof index);
-    console.info((await balances));
-    if (index < 0 || index >= (await balances).length) return console.info('Invalid index!');;
+    const index = Number(idx);
+    console.info(index);
+    // if (index != typeof 'number') return;
     const balance = (await balances)[index];
-
+    console.info((await balances));
     if (!balance) return console.info(null);
     else return console.info(balance);
   } catch (error) {
@@ -49,7 +51,7 @@ const getAccountBalance = async (index) => {
 }
 
 // Export All Methods
-module.exports = {
-  init,
-  getAccountBalance,
-}
+// module.exports = {
+//   init,
+//   getAccountBalance,
+// }

@@ -1,8 +1,6 @@
-// #!/usr/bin/env node
-// const { program } = require('commander');
-const { Command } = require('commander');
+import { Command } from 'commander';
 const program = new Command();
-const { init, getAccountBalance, } = require('./index');
+import { init, getAccountBalance } from "./index";
 
 program
   .name('konfidio')
