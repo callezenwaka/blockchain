@@ -1,0 +1,1 @@
+node konfidio.js init <balances> <transactions> <blockSize>
