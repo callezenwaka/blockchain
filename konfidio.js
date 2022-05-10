@@ -49,9 +49,9 @@ Konfidio.prototype.addBlock = function(nonce, prevBlockHash, hash) {
       hash: hash,
       prevBlockHash: prevBlockHash
     };
-
     this.transactions = [];
     this.blocks.push(block);
+    // console.info(hash);
 
     return block;
   } catch (error) {
