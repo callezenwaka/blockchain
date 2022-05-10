@@ -2,7 +2,7 @@
   "name": "konfidio",
   "version": "1.0.0",
   "description": "A coding challenge project.",
-  "main": "index.js",
+  "main": "konfidio.js",
   "scripts": {
     "test": "test"
   },
