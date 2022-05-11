@@ -1,10 +1,10 @@
 {
   "name": "konfidio",
   "version": "1.0.0",
-  "description": "A coding challenge project.",
+  "description": "A blockchain coding challenge project.",
   "main": "konfidio.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "Node.js",
-    "Express.js"
+    "Express.js",
+    "Blockchain"
   ],
   "author": "callisezenwaka@gmail.com",
   "license": "ISC",
@@ -22,5 +23,9 @@
   "homepage": "https://github.com/callezenwaka/Konfidio#readme",
   "dependencies": {
     "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
   }
 }
