@@ -3,8 +3,8 @@ const Konfidio = require('./konfidio');
 
 describe("Konfidio Blockchain.", function () {
   const balances = [200, 250, 500];
-  const transactions = [[0, 1, 50], [1, 2, 80], [1, 0, 100], [1, 2, 600], [2, 0, 150], [1, 0, 50], [2, 1, 80]];
-  const blockSize = 2;
+  const transactions = [[0, 1, 50], [1, 2, 80], [1, 0, 100], [1, 2, 600], [2, 0, 150], [1, 0, 50], [2, 1, 60], [0, 1, 55], [1, 2, 40], [1, 0, 70]];
+  const blockSize = 3;
   const index = 1;
   const pendingTransactions = [[0,1,50], [1,2,80]];
   const prevBlockHash = '548bc92f827bd41ad97243cc3ca4b765f8c68a2c';
@@ -28,7 +28,7 @@ describe("Konfidio Blockchain.", function () {
   });
 
   it("Should return a hashed string of length 40.", async () => {
-    const result = this.konfidio.hashBlock(prevBlockHash, pendingTransactions, 10);
+    const result = this.konfidio.getHash(prevBlockHash, pendingTransactions, 10);
 
     expect(result).to.be.a('string');
     expect(result).to.have.lengthOf(40);

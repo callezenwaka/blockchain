@@ -43,7 +43,7 @@ Konfidio.prototype.verifyTransaction = function(balance, transaction) {
  * @return { string } hash.
  * Block hash
  */
-Konfidio.prototype.hashBlock = function(prevBlockHash, blockTransactions, nonce) {
+Konfidio.prototype.getHash = function(prevBlockHash, blockTransactions, nonce) {
   try {
     // TODO: get hash string
     const dataString = prevBlockHash + nonce.toString() + JSON.stringify(blockTransactions);
@@ -67,10 +67,10 @@ Konfidio.prototype.getNonce = function(prevBlockHash, blockTransactions) {
   try {
     // TODO: get nonce number
     let nonce = 0;
-    let hash = this.hashBlock(prevBlockHash, blockTransactions, nonce);
+    let hash = this.getHash(prevBlockHash, blockTransactions, nonce);
     while (hash.substring(0, 4) !== '1234') {
       nonce++;
-      hash = this.hashBlock(prevBlockHash, blockTransactions, nonce);
+      hash = this.getHash(prevBlockHash, blockTransactions, nonce);
     }
 
     return nonce;
@@ -101,6 +101,7 @@ Konfidio.prototype.addBlock = function(nonce, prevBlockHash, hash) {
     };
     this.transactions = [];
     this.blocks.push(block);
+    console.info(this.blocks[this.blocks.length-1].transactions.length);
 
     return block;
   } catch (error) {
@@ -138,9 +139,9 @@ Konfidio.prototype.init = function(balances, transactions, blockSize) {
       if(this.transactions.length == blockSize) {
         const prevBlockHash = this.blocks[this.blocks.length - 1].hash;
         const nonce = this.getNonce(prevBlockHash, this.transactions);
-        const hash = this.hashBlock(prevBlockHash, this.transactions, nonce);
-        this.addBlock(nonce, prevBlockHash, hash);
-        this.transactions = [];
+        const hash = this.getHash(prevBlockHash, this.transactions, nonce);
+        const block = this.addBlock(nonce, prevBlockHash, hash);
+        // this.transactions = [];
         // console.info(`Block ${this.blocks.length - 1} added:\n${block}`);
       }
     };
