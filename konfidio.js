@@ -101,7 +101,6 @@ Konfidio.prototype.addBlock = function(nonce, prevBlockHash, hash) {
     };
     this.transactions = [];
     this.blocks.push(block);
-    console.info(this.blocks[this.blocks.length-1].transactions.length);
 
     return block;
   } catch (error) {
