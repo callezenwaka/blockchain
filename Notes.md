@@ -1,4 +1,4 @@
-# Konfidio Blockchain Backend Task
+# Blockchain Backend Task
 
 Task
 Given two arrays representing initialBalances and transactions and an integer blockSize, create a blockchain that includes all valid pending transactions in the order
@@ -15,25 +15,25 @@ node
 
 ### Initialize Constructor
 ```
-const Konfidio = require('./konfidio');
+const Blockchain = require('./blockchain');
 ```
 
 ### Instantiate Object
 ```
-const konfidio = new Konfidio();
+const blockchain = new Blockchain();
 ```
 
 ### Initialize Object
 ```
-konfidio.init(balances, transactions, blockSize);
+blockchain.init(balances, transactions, blockSize);
 ```
 
 ### Retrieve account balance
 ```
-konfidio.getAccountBalance(index);
+blockchain.getAccountBalance(index);
 ```
 
 ### Run Test
 ```
-npm test ./konfidio.test.js
+npm test ./blockchain.test.js
 ```

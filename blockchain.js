@@ -1,17 +1,17 @@
 const sha1 = require('sha1');
 
 /**
- * [START KONFIDIO CONSTRUCTOR]
+ * [START BLOCKCHAIN CONSTRUCTOR]
  * Constructor function
  */
-function Konfidio() {
+function blockchain() {
 	this.blocks = [];
 	this.balances = [];
   this.blockSize = null;
 	this.transactions = [];
 	this.addBlock(10, '0000000000000000000000000000000000000000', '0000000000000000000000000000000000000000');
 };
-// [END KONFIDIO CONSTRUCTOR]
+// [END BLOCKCHAIN CONSTRUCTOR]
 
 /**
  * [START VERIFY TRANSACTION]
@@ -20,7 +20,7 @@ function Konfidio() {
  * @return { boolean } boolean.
  * Verify transaction
  */
-Konfidio.prototype.verifyTransaction = function(balance, transaction) {
+blockchain.prototype.verifyTransaction = function(balance, transaction) {
   try {
     // TODO: verify transaction validity
     if (!transaction || transaction.length != 3) {
@@ -43,7 +43,7 @@ Konfidio.prototype.verifyTransaction = function(balance, transaction) {
  * @return { string } hash.
  * Block hash
  */
-Konfidio.prototype.getHash = function(prevBlockHash, blockTransactions, nonce) {
+blockchain.prototype.getHash = function(prevBlockHash, blockTransactions, nonce) {
   try {
     // TODO: get hash string
     const dataString = prevBlockHash + nonce.toString() + JSON.stringify(blockTransactions);
@@ -63,7 +63,7 @@ Konfidio.prototype.getHash = function(prevBlockHash, blockTransactions, nonce) {
  * @return { number } hash.
  * Nonce number
  */
-Konfidio.prototype.getNonce = function(prevBlockHash, blockTransactions) {
+blockchain.prototype.getNonce = function(prevBlockHash, blockTransactions) {
   try {
     // TODO: get nonce number
     let nonce = 0;
@@ -89,7 +89,7 @@ Konfidio.prototype.getNonce = function(prevBlockHash, blockTransactions) {
  * @return { object } block.
  * Add block
  */
-Konfidio.prototype.addBlock = function(nonce, prevBlockHash, hash) {
+blockchain.prototype.addBlock = function(nonce, prevBlockHash, hash) {
   try {
     const block = {
       index: this.blocks.length + 1,
@@ -118,7 +118,7 @@ Konfidio.prototype.addBlock = function(nonce, prevBlockHash, hash) {
  * @return { string } string.
  * Initialize blockchain
  */
-Konfidio.prototype.init = function(balances, transactions, blockSize) {
+blockchain.prototype.init = function(balances, transactions, blockSize) {
   try {
 		// TODO: initialize blockchain with parameters
     if (!balances || !transactions || !blockSize) 
@@ -159,7 +159,7 @@ Konfidio.prototype.init = function(balances, transactions, blockSize) {
  * @return { number } balance.
  * Account balance
  */
-Konfidio.prototype.getAccountBalance = function(index) {
+blockchain.prototype.getAccountBalance = function(index) {
   try {
 		// TODO: get account balance for a given index
     if (index < 0 || index >= this.balances.length)
@@ -176,4 +176,4 @@ Konfidio.prototype.getAccountBalance = function(index) {
 };
 // [END GET ACCOUNT BALANCE]
 
-module.exports = Konfidio;
+module.exports = blockchain;
