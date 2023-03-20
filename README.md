@@ -5,7 +5,7 @@ in which they are given. Provide functionality to get the balance of a specific 
 
 ### Clone repo
 ```
-git clone https://github.com/callezenwaka/Konfidio_task
+git clone https://github.com/callezenwaka/blockchain
 ```
 
 ### Install dependencies

@@ -4,6 +4,7 @@
   "description": "A blockchain coding challenge project.",
   "main": "blockchain.js",
   "scripts": {
+    "start": "node blockchain.js",
     "test": "mocha --timeout 10000"
   },
   "repository": {
